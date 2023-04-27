@@ -45,12 +45,12 @@ const cards =[ //массив
     },
     ];
 
+    const cardList2 = document.querySelector(".top_rated_film"); //находим разметку в DOM, куда нужно поместить список фильмов
+
         // <div class="movies__container">
         //     <h1 class="movies__title">&#10024 &#10024 &#10024 Мои любимые режиссеры &#10024 &#10024 &#10024</h1>
         //     <span class="movies__name"></span>
         //     <span class="movies__career"></span>
-        //     <span class="movies__films"></span>
-        //     <span class="movies__top_rated_film"></span>
         // </div>
 
     const createCard =(obj) =>{
@@ -62,32 +62,44 @@ const cards =[ //массив
         const career = document.createElement('span');
         career.className ="movies__career";
         career.textContent = obj.career;
-        const films = document.createElement('span');
-        films.className ="movies__films";
-        films.textContent = obj.films;
-        const top_rated_film = document.createElement('span');
-        top_rated_film.className ="movies__top_rated_film";
+        const films = document.createElement("a");
+        films.className = "films";
+        films.href = obj.films;
+        films.textContent = "Фильмография";
+
+        const top_rated_film = document.createElement("p");
+        top_rated_film.className = "top_rated_film";
         top_rated_film.textContent = obj.top_rated_film;
-       
-        //удочеряем элементы
+
+    
+        //удочеряем элементы  в нужные нам элементы разметки
         block.append(name);  
         block.append(career);
         block.append(films);
-        block.append(top_rated_film);
         console.log(block);
-        return block;
+        return block; // возвращаем готовый блок с разметкой и заполненный элементами из массива
     }
         const addCard =(objItem, container) =>{
-        const item = createCard(objItem);
+        const item = createCard(objItem); // создаем функцию, которая будет добавлять новые блоки к уже созданным
         container.append(item);
         }
-        addCard(cards,moviesContainer);
 
-        document.addEventListener('DOMRContentLoaded',() =>{
-            cards.forEach((element)=>{
-                addCard(element,moviesContainer);
-            })
+        cards.forEach((element)=>{
+            addCard(element,moviesContainer);
         })
+
+        const cards2 = cards.map(function (obj) {
+            // создаем новый массив из объектов уже существующего (top_rated_film)
+        return obj.top_rated_film;
+        });
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            // создаем функцию, которая будет перебирать объекты массива по очереди и добавлять их в разметку Html
+            cardList2.textContent = cards2.join(", ");
+        });
+        
+
+
 
     //createCard(cards);
 
