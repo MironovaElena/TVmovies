@@ -1,0 +1,17 @@
+body{
+    background-image: url("../assets/img/blob-scene-haikei.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.movies__title{
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+.item{
+    max-width: 60px;
+}
+.movies__container{
+    color: white;
+}
