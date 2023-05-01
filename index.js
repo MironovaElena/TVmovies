@@ -92,10 +92,10 @@ const cards =[ //массив
             // создаем новый массив из объектов уже существующего (top_rated_film)
         return obj.top_rated_film;
         });
-        titles.textContent = cards2;
+        titles.textContent = cards2.join(", ");
         
 
-
+        
 
     //createCard(cards);
 
